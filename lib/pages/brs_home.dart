@@ -21,8 +21,9 @@ class BrsHome extends StatelessWidget {
             onSubmitted: (value) async {
               value.replaceAll(" ", "+");
               value.toLowerCase();
-              String val =
-                  await brsController.fetchRecommendations(int.parse(value));
+              String kVal = await bookListController.booksFromJsonFile();
+              // String val =
+              //     await brsController.fetchRecommendations(int.parse(value));
               print(value);
             },
             style: TextStyle(color: Colors.white),
