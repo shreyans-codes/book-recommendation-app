@@ -1,4 +1,5 @@
 import 'package:book_search/controller/search_controller.dart';
+import 'package:book_search/pages/brs_home.dart';
 import 'package:flutter/material.dart';
 import 'package:book_search/services/retrieve-books.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,7 @@ void main() {
   runApp(
     const GetMaterialApp(
       home: MaterialApp(
-        home: MyApp(),
+        home: BrsHome(),
         themeMode: ThemeMode.dark,
       ),
     ),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -10,8 +12,14 @@ class BackendBook {
 
 Future<List<BackendBook>> getBookList() async {
   List<BackendBook> backendBook = [];
-  final String baseUrl = "http://127.0.0.1:5000/";
-  var response = await http.post(Uri.parse(baseUrl + "brs"));
+  final Map<String, String> httpHeaders = {
+    HttpHeaders.contentTypeHeader: "application/json",
+    "Connection": "Keep-Alive",
+    "Keep-Alive": "timeout=5, max=1000"
+  };
+  final String baseUrl = "http://10.0.2.2:5000/";
+  var response =
+      await http.post(Uri.parse(baseUrl + "brs/0"), headers: httpHeaders);
   if (response.statusCode == 200) {
     Map<String, dynamic> jVal = jsonDecode(response.body.toString());
     for (int i = 0; i < jVal.length; i++) {
